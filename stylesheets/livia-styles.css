@@ -97,3 +97,41 @@
   text-align: left;
   float: left;
 }
+
+.project-grid {
+  
+  width: 680px;
+  margin: auto;
+  text-align: center;
+  
+}
+
+.grid-item {
+  border: 5px solid #ffffff;
+  width: 300px;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.grid-item:hover {
+  border: 5px solid #ff00ff;
+}
+
+.grid-img {
+  width: auto;
+  height: auto;
+  margin: auto;
+  
+}
+
+.grid-img-img {
+  width: 100%;
+  height: auto;
+}
+
+.grid-text {
+  margin: auto;
+  text-align: center;
+  
+}
