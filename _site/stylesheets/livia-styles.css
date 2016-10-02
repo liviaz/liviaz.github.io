@@ -107,31 +107,48 @@
 }
 
 .grid-item {
-  border: 5px solid #ffffff;
   width: 300px;
-  margin: 10px;
+  margin: 15px;
   display: inline-block;
   vertical-align: top;
 }
 
 .grid-item:hover {
-  border: 5px solid #ff00ff;
+  position: relative;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+  z-index: 1000;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
+
+
 
 .grid-img {
-  width: auto;
-  height: auto;
   margin: auto;
-  
+  width:300px;
+  height: 250px;  
+  display:block; 
+  position:relative; 
+  overflow:hidden; 
+  background:#fff url(../images/duck.png) no-repeat center;
+  transition: 0.7s;
 }
 
-.grid-img-img {
-  width: 100%;
-  height: auto;
+
+.grid-img:hover {
+background-image: url('../images/duck-overlay.png');
 }
+
 
 .grid-text {
   margin: auto;
   text-align: center;
-  
+  margin-top: 10px;
 }
+
