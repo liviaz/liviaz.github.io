@@ -1,0 +1,48 @@
+/*******************************************************************************
+screen between 481 and 760 px
+*******************************************************************************/
+
+body {
+  word-wrap:break-word;
+}
+
+header {
+  padding:0;
+}
+
+header ul, header p.view {
+  position:static;
+}
+
+pre, code {
+  word-wrap:normal;
+}
+
+.wrapper {
+  width:100%;
+  margin:0 auto;
+}
+
+section {
+  width:100%;
+  padding-bottom:50px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+section h1 {
+  margin-left: 10px;
+}
+
+.content-container {
+  display: block;
+  margin: auto;
+  margin-left: 10px;
+  overflow: auto;
+}
+
+
+
+
+
+

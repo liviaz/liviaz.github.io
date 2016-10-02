@@ -1,0 +1,112 @@
+/*******************************************************************************
+screen widths less than 480 px
+*******************************************************************************/
+
+body {
+  font-size:16px;
+}
+
+.inner {
+  min-width: 320px;
+  max-width: 480px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+code, pre {
+  min-width: 320px;
+  max-width: 480px;
+  font-size: 11px;
+}
+
+header ul {
+  width:99%;
+}
+
+header li, header ul li + li + li {
+  width:33%;
+}
+
+p {
+  margin-bottom: 20px;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 90%;
+}
+
+.wrapper {
+  width:100%;
+  margin:0 auto;
+}
+
+
+section {
+  width:100%;
+  padding-bottom:50px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+section h1 {
+  margin-left: 10px;
+}
+
+.content-container {
+  display: block;
+  margin: auto;
+  margin-left: 10px;
+  overflow: auto;
+}
+
+#image-container {
+  display: block;
+  width: 90%;
+  max-height: 300px;
+  text-align: left;
+  float: left;
+}
+
+#text-container {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  text-align: left;
+  float: left;
+}
+
+#image-of-me {
+  width: auto;
+  height: auto; 
+  display: inline-block;
+}
+
+#text-about-me {
+  text-align: left;
+  display: inline-block;
+  margin-left: 0px;
+  margin-top: 20px;
+}
+
