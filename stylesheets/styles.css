@@ -1,6 +1,6 @@
 body {
   background-color: #fff;
-  font: 14px/1.5 Helvetica, Arial, sans-serif;
+  font: 16px/1.5 Helvetica, Arial, sans-serif;
   color:#727272;
   font-weight:400;
   margin: 0px;
@@ -32,12 +32,12 @@ h3, h4, h5, h6 {
 }
 
 a {
-  color:#727272;
+  color:#39c;
   text-decoration:none;
 }
 
 a:hover {
-  color:#39c;
+  color:#28a;
 }
 
 a small {
