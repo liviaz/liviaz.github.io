@@ -1,5 +1,5 @@
 .header-wrapper {
-  background-color: #2a5191;
+  background-color: #23939b;
   margin: auto;
   width: 100%;
 }
@@ -31,7 +31,7 @@
 }
 
 .footer-wrapper {
-  background-color: #2a5191;
+  background-color: #23939b;
   width: 100%;
   margin: auto;
   color: #ffffff;
@@ -107,8 +107,8 @@
 }
 
 .grid-item {
-  width: 300px;
-  margin: 15px;
+  width: 250px;
+  margin: 30px;
   display: inline-block;
   vertical-align: top;
 }
@@ -131,24 +131,50 @@
 
 .grid-img {
   margin: auto;
-  width:300px;
+  width: 250px;
   height: 250px;  
   display:block; 
   position:relative; 
   overflow:hidden; 
-  background:#fff url(../images/duck.png) no-repeat center;
   transition: 0.7s;
 }
 
+#gene-expr-img {
+  background:#fff url(../images/gene-expression.svg) no-repeat center;
+}
 
-.grid-img:hover {
-background-image: url('../images/duck-overlay.png');
+#gene-expr-img:hover {
+  background-image: url('../images/gene-expression-alt.svg');
+}
+
+#embryo-viability-img {
+  background:#fff url(../images/embryo-viability.svg) no-repeat center;
+}
+
+#embryo-viability-img:hover {
+  background-image: url('../images/embryo-viability-alt.svg');
+}
+
+#image-processing-img {
+  background:#fff url(../images/image-processing.svg) no-repeat center;
+}
+
+#image-processing-img:hover {
+  background-image: url('../images/image-processing-alt.svg');
+}
+
+#tree-map-img {
+  background:#fff url(../images/tree-map.svg) no-repeat center;
+}
+
+#tree-map-img:hover {
+  background-image: url('../images/tree-map-alt.svg');
 }
 
 
 .grid-text {
   margin: auto;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
