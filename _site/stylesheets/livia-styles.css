@@ -156,11 +156,11 @@
 }
 
 #image-processing-img {
-  background:#fff url(../images/image-processing.svg) no-repeat center;
+  background:#fff url(../images/img-proc.svg) no-repeat center;
 }
 
 #image-processing-img:hover {
-  background-image: url('../images/image-processing-alt.svg');
+  background-image: url('../images/img-proc-alt.svg');
 }
 
 #tree-map-img {
