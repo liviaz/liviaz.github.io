@@ -1,3 +1,6 @@
+---
+---
+
 <!doctype html>
 <html>
   <head>
@@ -19,40 +22,20 @@
   </head>
   <body>
   
-  
-<header class="header-wrapper">
-
-<div class="header-contents">
-<div class="header-item"><a href="/">Livia Zarnescu Yanez</a></div>
-</div>
-
-</header>
+  {% include header.html %}
   
     <div class="wrapper">
 
       <section>
     
-      <h3 id="test-post">test post</h3>
-<p>asdfasdfsda</p>
-
-<h3 id="hello">hello</h3>
-<p>hi</p>
-
-
+      {{ content }}
       
       </section>
       
     </div>
     
     
-    
-<footer class="footer-wrapper">
-
-  <div class="footer-contents">
-    <div>Theme and content by LZY, with help from Jekyll, hosted by GitHub</div>
-  </div>
-  
-</footer>
+    {% include footer.html %}
     
     <script src="javascripts/scale.fix.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
