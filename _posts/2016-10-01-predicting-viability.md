@@ -6,35 +6,52 @@ permalink: predicting-viability
 
 # Project: predicting embryo viability
 
-In this post I will briefly introduce the clinical need (and the motivation behind this project). Then I will go into more detail about the approach I used to tackle the problem of predicting embryo viability and show some results. The material on this page is drawn from [my recently published paper](http://www.nature.com/ncomms/2016/160224/ncomms10809/full/ncomms10809.html) and also from my class project for CS 229 at Stanford (Machine Learning).
+The goal of this project was to develop a predictor of embryo viability with better performance compared to the current clinical gold standard. You can read more about the motivation behind this project and the clinical need in _in vitro_ fertilization (IVF) [here](../clinical-need.html).
 
-### Clinical need
+On this page I will go into detail about how I gathered parameters for my model and how I validated them in a laboratory and clinical setting. This material is drawn from [my recently published paper](http://www.nature.com/ncomms/2016/160224/ncomms10809/full/ncomms10809.html) and also from my class project for CS 229 at Stanford (Machine Learning).
 
-The focus of my research was to improve outcomes of *in vitro* fertilization (IVF), with the end goal of improving pregnancy rates and reducing the incidence of negative outcomes such as miscarriage, pregnancy complications and preterm birth. These negative outcomes often happen for one of two reasons: 
 
-1. __no viable embryos__ are transferred and the patient does not become pregnant or miscarries
-2. __two or more viable embryos__ are transferred and the patient has twins or triplets, which have a very high risk of complications and preterm birth
+### What is currently done?
 
-To avoid these poor outcomes, physicians would ideally want to transfer **exactly one viable embryo** to their patient so that they have a singleton pregnancy. Unfortunately it is currently very difficult to figure out which embryos are viable and which are not. Typically the embryos which look "good" are presumed to be viable, but this approach has very poor positive predictive value (that is, even among embryos which look "good" only about 50-60% are actually viable). A real clinical example is shown below: all of the embryos shown appear to have good morphology, but only one actually resulted in a pregnancy upon transfer.
+**Gold standard:** In IVF clinics today, embryos are typically chosen for transfer based on a morphological assessment. This assessment includes information about the number of cells in the embryo (embryos which develop more slowly are less viable), and some qualitative parameter(s) about the appearance of those cells (embryos which are fragmented or asymmetrical are also less viable). For a transfer at the day 5 blastocyst stage, examples of good and poor morphology are shown below.
 
-<div style="width:300px; text-align:center; margin:auto;" markdown="1">
-![morphologically similar embryos](../images/SampleEmbryos.png)
+<div style="width:400px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;" markdown="1">
+![morphology grading](../images/embryo-morphology-2.svg)
 </div>
 
-*So it seems that we need a more accurate predictor of viability to help physicians make better decisions about which embryos to transfer.*
+**How well can morphology predict viability?** One [study](http://www.sciencedirect.com/science/article/pii/S0015028206044530) of over 2000 IVF cycles evaluated the ability of the day 5 morphological grade to predict clinical pregnancy. It reported an area under the ROC curve of approximately 0.66, which is better than choosing embryos for transfer at random but not really high enough to be considered a "good" predictor. 
 
-### What else can we measure besides morphology?
+At a sensitivity value of 68% (which is where they set their threshold), the positive predictive value was only 44%. This means that only 44% of _good morphology_ embryos transferred actually resulted in a pregnancy -- not a stellar success rate. However, only 31% of _all_ embryos transferred resulted in a pregnancy, so morphology did have some value in identifying viable embryos. 
 
-In my quest to find a better predictor viability, I settled on two types of parameters to measure. I chose these because they can be measured noninvasively with minimal disturbance to the embryo.
+Still, I thought we can do better, so I decided to gather other kinds of parameters to construct a better predictor of viability.
 
-1. Time lapse imaging parameters (basically, the length of time between cell divisions and other events in development)
-2. Biomechanical parameters (I thought the embryo's stiffness and viscosity could be indicative of viability)
+### Searching for a better predictor of viability
 
-The imaging parameters can be measured by 
+My criteria for choosing parameters to measure were guided by their potential for clinical application. This means I was looking for data that I could gather noninvasively and without significant disruption to the existing clinical workflow. I also wanted to focus on parameters which could be measured objectively. There is a lot of variability in human-assigned morphological scores which probably contributes to the poor predictive value of morphological assessment. In the end, I settled on two kinds of parameters which are described below.
+
+**Biomechanical parameters:** I developed a biomechanical model of an embryo and built a device to measure its viscous and elastic parameters. The measurement works by applying a controlled pressure to the edge of an embryo and observing its response to the pressure over time. As seen below, embryos which appear similar can have dramatically different responses to the same applied pressure.
+
+<div style="width:400px; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/embryo-pressure.svg)
+</div>
+
+How can we quantify these variations in response? 
+
+Show measurement/model
+Talk about fitting model to data
+Talk about model selection
+
+
+**Time lapse imaging parameters:** These parameters can be measured using commercially available equipment found in IVF clinics, and correspond to the length of time between various cell divisions and other events in development.
+
+Go into a little bit of detail on what is currently measured and how "optimal" region is determined.
+Talk about what other parameters we measured and how we can improve on simple thresholding.
+
+
 
 
 ***Include schematic of prediction based on multiple types of parameters***
-*** Include some equations with MathJax ***
+*** Include some equations with MathJax? ***
 
 
 
