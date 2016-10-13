@@ -162,28 +162,35 @@
 
 <h3 id="comparison-to-morphological-assessment">Comparison to morphological assessment</h3>
 
-<p>Comparison to morphology and ROC curves</p>
+<p>Now that we’ve quantified how well biomechanical parameters can predict viability, let’s compare them to the gold standard morphological assessment which I introduced earlier. For the embryos on which I did a biomechanical measurement at day 1 after fertilization, I also recorded their morphological parameters at day 3.</p>
+
+<p>After doing feature selection on the biomechanical and morphological parameters, I plotted the ROC curves below:</p>
 
 <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; ">
   <p><img src="../images/mech-morphology-roc.svg" alt="morphology grading" /></p>
 </div>
 
-<p>Bar plot of max ROC</p>
+<p>It appears that biomechanical parameters have a higher predictive value than morphological parameters alone, which is remarkable given that the morphological parameters are recorded 2 days later! A comparison of the area under the ROC curves is shown below. The error bars come from doing multiple Monte carlo simulations of the classification performance with cross-validation.</p>
 
 <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; ">
   <p><img src="../images/mech-morphology-bar.svg" alt="morphology grading" /></p>
 </div>
 
-<h3 id="other-morphological-parameters">Other morphological parameters</h3>
+<p>Combining biomechanics and morphology seems to give the highest classifier performance. So hypothetically, physicians could choose between having a pretty good predictive value at day 1, or a slightly better predictive value if they wait until day 3.</p>
 
-<h3 id="conclusions">Conclusions</h3>
+<h3 id="summary">Summary</h3>
 
-<p><strong>Time lapse imaging parameters:</strong> I also gathered some imaging parameters to see how their performance in viability prediction compares to that of mechanical parameters. These imaging parameters can be measured using commercially available equipment found in IVF clinics, and correspond to the length of time between various cell divisions and other events in development.</p>
+<p>The work described here gives an overview of some of the model selection and validation techniques I used to predict embryo viability using biomechanical parameters. In a clinical setting, these parameters will likely not be used on their own to predict viability, but rather will be combined with morphological parameters.</p>
 
-<p>The scientific premise behind these parameters is generally that embryos which develop too slowly or too quickly are abnormal in some way and not likely to be viable. A couple of papers from <a href="http://www.nature.com/nbt/journal/v28/n10/abs/nbt.1686.html">2010</a> and <a href="http://humrep.oxfordjournals.org/content/26/10/2658.short">2011</a> describe some specific timing intervals which may be particularly predictive of viability.</p>
+<p>Time lapse imaging is also starting to be used to measure the timing of embryo cell divisions and is showing promise in predicting viability. This technology is based on the premise that embryos which develop too quickly or slowly are abnormal in some way and may have reduced viability.</p>
 
-<p>Go into a little bit of detail on what is currently measured and how “optimal” region is determined.
-Talk about what other parameters we measured and how we can improve on simple thresholding.</p>
+<p>The techniques applied here could eventually be extended to build a model which incorporates multiple types of data to come up with a better model of embryo viability. A model could even perform embryo health “monitoring” over time, and use observed data to predict an embryo’s future likelihood of development or viability state. The model’s belief about an embryo’s viability state could inform a physician’s decisions about whether to transfer it or not.</p>
+
+<div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; ">
+  <p><img src="../images/embryo-model-possible.svg" alt="morphology grading" /></p>
+</div>
+
+<p>This type of model – describing embryo development as a partially-observable Markov decision process (POMDP) – could enable physicians to transfer the <strong><em>most</em></strong> viable embryo to transfer to a patient rather than just <strong><em>a</em></strong> viable embryo. I briefly explored this type of model in a <a href="../images/AA228paper.pdf">class paper</a> with code available <a href="https://github.com/liviaz/EmbryoCulturePOMDP">here</a> but soon found out that the amount of computation required to find solutions is not yet clinically practical.</p>
 
 
       

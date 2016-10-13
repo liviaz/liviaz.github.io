@@ -132,37 +132,41 @@ For the data in this project, I used an exhaustive search and looked for a combi
 
 ### Comparison to morphological assessment
 
-Comparison to morphology and ROC curves
+Now that we've quantified how well biomechanical parameters can predict viability, let's compare them to the gold standard morphological assessment which I introduced earlier. For the embryos on which I did a biomechanical measurement at day 1 after fertilization, I also recorded their morphological parameters at day 3. 
 
+After doing feature selection on the biomechanical and morphological parameters, I plotted the ROC curves below:
 
  <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
 ![morphology grading](../images/mech-morphology-roc.svg)
 </div>
 
-
-Bar plot of max ROC
+It appears that biomechanical parameters have a higher predictive value than morphological parameters alone, which is remarkable given that the morphological parameters are recorded 2 days later! A comparison of the area under the ROC curves is shown below. The error bars come from doing multiple Monte carlo simulations of the classification performance with cross-validation. 
 
  <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
 ![morphology grading](../images/mech-morphology-bar.svg)
 </div>
 
-
-### Other morphological parameters
-
+Combining biomechanics and morphology seems to give the highest classifier performance. So hypothetically, physicians could choose between having a pretty good predictive value at day 1, or a slightly better predictive value if they wait until day 3. 
 
 
+### Summary
+
+The work described here gives an overview of some of the model selection and validation techniques I used to predict embryo viability using biomechanical parameters. In a clinical setting, these parameters will likely not be used on their own to predict viability, but rather will be combined with morphological parameters. 
+
+Time lapse imaging is also starting to be used to measure the timing of embryo cell divisions and is showing promise in predicting viability. This technology is based on the premise that embryos which develop too quickly or slowly are abnormal in some way and may have reduced viability.
+
+The techniques applied here could eventually be extended to build a model which incorporates multiple types of data to come up with a better model of embryo viability. A model could even perform embryo health "monitoring" over time, and use observed data to predict an embryo's future likelihood of development or viability state. The model's belief about an embryo's viability state could inform a physician's decisions about whether to transfer it or not. 
+
+ <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/embryo-model-possible.svg)
+</div>
+
+This type of model -- describing embryo development as a partially-observable Markov decision process (POMDP) -- could enable physicians to transfer the ___most___ viable embryo to transfer to a patient rather than just ___a___ viable embryo. I briefly explored this type of model in a [class paper](../images/AA228paper.pdf) with code available [here](https://github.com/liviaz/EmbryoCulturePOMDP) but soon found out that the amount of computation required to find solutions is not yet clinically practical.
 
 
-### Conclusions
 
 
-**Time lapse imaging parameters:** I also gathered some imaging parameters to see how their performance in viability prediction compares to that of mechanical parameters. These imaging parameters can be measured using commercially available equipment found in IVF clinics, and correspond to the length of time between various cell divisions and other events in development. 
 
-The scientific premise behind these parameters is generally that embryos which develop too slowly or too quickly are abnormal in some way and not likely to be viable. A couple of papers from [2010](http://www.nature.com/nbt/journal/v28/n10/abs/nbt.1686.html) and [2011](http://humrep.oxfordjournals.org/content/26/10/2658.short) describe some specific timing intervals which may be particularly predictive of viability.
-
-
-Go into a little bit of detail on what is currently measured and how "optimal" region is determined.
-Talk about what other parameters we measured and how we can improve on simple thresholding.
 
 
 
