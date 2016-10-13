@@ -149,6 +149,14 @@
   background-image: url('../images/gene-expression-alt.svg');
 }
 
+#impact-detection-img {
+  background:#fff url(../images/impact-detection.svg) no-repeat center;
+}
+
+#impact-detection-img:hover {
+  background-image: url('../images/impact-detection-alt.svg');
+}
+
 #embryo-viability-img {
   background:#fff url(../images/embryo-viability.svg) no-repeat center;
 }
