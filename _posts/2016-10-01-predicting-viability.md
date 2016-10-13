@@ -10,6 +10,8 @@ The goal of this project was to develop a predictor of embryo viability with bet
 
 On this page I will go into detail about how I gathered parameters for my model and how I validated them in a laboratory and clinical setting. This material is drawn from [my recently published paper](http://www.nature.com/ncomms/2016/160224/ncomms10809/full/ncomms10809.html) and also from my class project for CS 229 at Stanford (Machine Learning).
 
+The code for this project was written in Matlab and can be found on my [GitHub profile](https://github.com/liviaz/EmbryoProject).
+
 
 ### What is currently done?
 
@@ -75,7 +77,7 @@ Qualitatively, the 4-parameter modified SLS and the 5-parameter Wiechert models 
 ![morphology grading](../images/model-selection-plot.svg)
 </div>
 
-Here our previous intuition is confirmed, and it again appears that the 4-parameter modified SLS has the lowest testing error and thus is the best model to describe the mechanical behavior of a 1-cell embryo. Because this is still a bulk model, it is important to note that the 4 parameters do not correspond to individual structures within the embryo, but rather describe its behavior as if it were a homogeneous material. 
+Although it is difficult to tell from just looking, the 4-parameter model has slightly lower testing error than the 3 and 5-parameter models (p < 0.01). Therefore we can see our previous intuition is confirmed, and the 4-parameter modified SLS is the best model to describe the mechanical behavior of a 1-cell embryo. Because this is still a bulk model, it is important to note that the 4 parameters do not correspond to individual structures within the embryo, but rather describe its behavior as if it were a homogeneous material. 
 
 ### Predicting viability  
 
@@ -87,30 +89,65 @@ The experimental design I used to answer this question is shown below, where ide
 ![morphology grading](../images/experimental-design.svg)
 </div>
 
-I gathered data on 89 human research embryos and 235 more human embryos as part of a pilot clinical study at day 1 after fertilization. Although 
+I gathered two separate data sets with human embryos (one with n = 89 and one with n = 235) where I measured their mechanical properties at day 1 after fertilization and recorded development to day 5-6. The data from the first set of embryos looks like this (plotted in 2D only).
 
-2D scatter plot of parameters
+ <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/human-data-scatter.svg)
+</div>
+
+From the plot, it appears that viable embryos have mechanical parameters close to (k1, n1) = (0.30, 0.59), and the farther away they are from this point the less likely they are to be viable. It would be great to come up with a classifier that could predict whether an embryo is viable or not given a measured set of mechanical parameters. 
+
+**Embryo classification:** So what kind of approaches could we use to construct such a classifier? Some possibilities include:
+
+1. **Decision tree:** This might work reasonably well to pick out a rectangular region around the region with viable embryos
+2. **Logistic regression:** This would output a linear decision boundary and would therefore require some transformation of the parameters 
+3. **Support vector machines (SVM):** This would require the use of a kernel such as a radial basis function to appropriately encircle the region with viable embryos
+
+I ended up choosing to use an SVM classifier because with appropriate tuning it can produce a decision boundary similar to the one output by the other two methods. It also doesn't require any assumptions to be made about the shape of the "viable" region -- I won't have to manually choose an appropriate transformation for the parameters. 
+
+Now, how can we appropriately tune the SVM parameters to predict embryo viability? There is the same risk of under/over-fitting that we encountered in the section on model selection above. In SVM, this results in a decision boundary which is too smooth to capture the shape of the data, or so complex that it fits the training data perfectly but does not generalize well:
+
+ <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/svm-param-tuning.svg)
+</div>
+
+We can again find an appropriate balance between bias and variance by using cross-validation to select the radial basis function sigma parameter and the box constraint parameter. The decision boundary which minimizes the mis-classification rate is shown below. 
+
+ <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/human-data-svm.svg)
+</div>
+
+Although this approach works quite well to separate viable from non-viable embryos, one drawback of using SVM is that it is difficult to link a data point's distance from the decision boundary to a real-world interpretation. For example, suppose we wish to rank a group of embryos by viability and choose the _most_ viable one. We could elect to rank them by their distances from the SVM decision boundary and choose the one with the largest positive distance; however, there is no easy way to transform this distance value into a metric such as an embryo's likelihood of viability.
+
+**Feature selection:** One thing we haven't explored yet is whether some parameters in our model are more predictive than others. Keeping useless parameters in a model can hurt its performance, so we want to make sure to only keep parameters that add predictive value to our model. 
+
+There isn't always a best way to find the optimal combination of features for a model. Here I only tested combinations of up to 4 features, so I was able to use a brute force approach (exhaustive search, which is O(2^n)). For larger data sets (see my work on using 6-degree-of-freedom accelerometer and gyroscope data to detect head impacts [here](http://ieeexplore.ieee.org/document/6805633/?reload=true)), approaches such as forward or reverse feature selection may be necessary (and are only O(n^2)). 
+
+For the data in this project, I used an exhaustive search and looked for a combination of features which maximized the area under the ROC curve. It turned out that only two mechanical parameters were sufficient to maximize the classifier's performance, as shown below:
+
+ <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/feature-selection.svg)
+</div>
 
 
-
-
-Bar plot 
-
-
-
-
-Classification and SVM decision boundary
-
-
-
-
-Feature selection
-
-
-
+### Comparison to morphological assessment
 
 Comparison to morphology and ROC curves
 
+
+ <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/mech-morphology-roc.svg)
+</div>
+
+
+Bar plot of max ROC
+
+ <div class="post-image" style="width:80%; margin:auto; margin-top: 20px; text-align: center; " markdown="1">
+![morphology grading](../images/mech-morphology-bar.svg)
+</div>
+
+
+### Other morphological parameters
 
 
 

@@ -1,0 +1,182 @@
+.header-wrapper {
+  background-color: #23939b;
+  margin: auto;
+  width: 100%;
+}
+
+.header-contents {
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.header-item {
+  font-size: 1.8em;
+  font-weight: 400;
+  color:#ffffff;
+  font: Roboto;
+  display:inline-block;
+  margin: auto;
+  text-align: center;
+}
+
+.header-item a {
+  color: #ffffff;
+  text-align: center;
+  margin: auto;
+}
+
+.header-item a:hover{
+  color: 
+}
+
+.footer-wrapper {
+  background-color: #23939b;
+  width: 100%;
+  margin: auto;
+  color: #ffffff;
+}
+
+.footer-contents {
+  padding: 20px;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.content-container {
+  display: inline-block;
+  margin: auto;
+}
+
+#image-container {
+  display: inline-block;
+  width: 30%;
+  max-height: 300px;
+  text-align: left;
+  float: left;
+}
+
+#text-container {
+  display: inline-block;
+  width: 60%;
+  max-height: 300px;
+  text-align: left;
+  float: left;
+}
+
+#image-of-me {
+  width: auto;
+  height: auto; 
+  display: inline-block;
+}
+
+#text-about-me {
+  text-align: left;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.contact-group-container {
+  max-width: 49%;
+  min-width: 300px;
+  height: 40px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.contact-image-container {
+  display: inline-block;
+  max-width: 30px;
+  max-height: 30px;
+  text-align: left;
+  float: left;
+}
+
+.contact-text-container {
+  display: inline-block;
+  margin-left: 20px;
+  text-align: left;
+  float: left;
+}
+
+.project-grid {
+  
+  width: 680px;
+  margin: auto;
+  text-align: center;
+  
+}
+
+.grid-item {
+  width: 250px;
+  margin: 30px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.grid-item:hover {
+  position: relative;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+  z-index: 1000;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+
+
+.grid-img {
+  margin: auto;
+  width: 250px;
+  height: 250px;  
+  display:block; 
+  position:relative; 
+  overflow:hidden; 
+  transition: 0.7s;
+}
+
+#gene-expr-img {
+  background:#fff url(../images/gene-expression.svg) no-repeat center;
+}
+
+#gene-expr-img:hover {
+  background-image: url('../images/gene-expression-alt.svg');
+}
+
+#embryo-viability-img {
+  background:#fff url(../images/embryo-viability.svg) no-repeat center;
+}
+
+#embryo-viability-img:hover {
+  background-image: url('../images/embryo-viability-alt.svg');
+}
+
+#image-processing-img {
+  background:#fff url(../images/img-proc.svg) no-repeat center;
+}
+
+#image-processing-img:hover {
+  background-image: url('../images/img-proc-alt.svg');
+}
+
+#tree-map-img {
+  background:#fff url(../images/tree-map.svg) no-repeat center;
+}
+
+#tree-map-img:hover {
+  background-image: url('../images/tree-map-alt.svg');
+}
+
+
+.grid-text {
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
