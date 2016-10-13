@@ -180,3 +180,8 @@
   margin-top: 20px;
 }
 
+.50pct-img > p > img {
+  width: 400px;
+  height: auto;
+  
+}

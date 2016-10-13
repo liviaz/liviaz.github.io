@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="131.04683mm"
+   height="12.283833mm"
+   viewBox="0 0 464.33916 43.52539"
+   id="svg3425"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="spring-dashpot.svg">
+  <defs
+     id="defs3427" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="170.8005"
+     inkscape:cy="-29.750222"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1280"
+     inkscape:window-height="657"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3430">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(103.31868,-374.88522)">
+    <g
+       id="g3476"
+       transform="matrix(2,0,0,2,-163.13662,-484.73045)">
+      <rect
+         style="display:inline;fill:#ffffff;stroke:#ffffff;stroke-width:1.25812495;stroke-miterlimit:10"
+         id="rect3137"
+         height="15.699088"
+         width="20.094833"
+         class="st1"
+         y="432.44769"
+         x="90.65213" />
+      <path
+         style="display:inline;fill:none;stroke:#000000;stroke-width:1.56990886;stroke-miterlimit:10"
+         inkscape:connector-curvature="0"
+         id="path3139"
+         d="m 122.36429,441.08222 -10.98936,0 c 0,0 0,0 0,0 l -3.13982,7.69256 c 0,0 -0.15699,0 -0.15699,0 l -3.92477,-14.91414 c 0,0 -0.15699,0 -0.15699,0 l -5.808669,14.75714 c 0,0 -0.15699,0 -0.15699,0 l -4.08176,-15.22811 c 0,0 -0.15699,0 -0.15699,0 l -3.139818,7.53556 c 0,0 0,0 0,0 l -12.559271,0"
+         class="st0" />
+    </g>
+    <g
+       id="g3480"
+       transform="matrix(2,0,0,2,-154.5652,-399.66788)">
+      <line
+         style="display:inline;fill:none;stroke:#000000;stroke-width:1.29122221;stroke-miterlimit:10"
+         id="line3135"
+         y2="398.15784"
+         x2="257.79285"
+         y1="398.15784"
+         x1="212.42142"
+         class="st0" />
+      <rect
+         style="display:inline;fill:#ffffff;stroke:#ffffff;stroke-width:0.68159467;stroke-miterlimit:10"
+         id="rect3141"
+         height="16.278831"
+         width="5.6975908"
+         class="st2"
+         y="390.01843"
+         x="234.32809" />
+      <polyline
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.97299999;stroke-miterlimit:10"
+         transform="matrix(1.6278831,0,0,1.6278831,148.70145,261.25293)"
+         id="polyline3143"
+         points="47.6,78.2 56.5,78.2 56.5,90 47.6,90 "
+         class="st3" />
+      <line
+         style="display:inline;fill:none;stroke:#000000;stroke-width:1.62788308;stroke-miterlimit:10"
+         id="line3145"
+         y2="404.01825"
+         x2="234.32809"
+         y1="392.1347"
+         x1="234.32809"
+         class="st0" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:80px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-69.490555"
+       y="389.20163"
+       id="text3449"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3451"
+         x="-69.490555"
+         y="389.20163"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle">spring</tspan><tspan
+         sodipodi:role="line"
+         x="-69.490555"
+         y="414.20163"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
+         id="tspan3453">(elastic)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:80px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="207.05757"
+       y="389.20163"
+       id="text3449-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3451-4"
+         x="207.05757"
+         y="389.20163"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle">dashpot</tspan><tspan
+         sodipodi:role="line"
+         x="207.05757"
+         y="414.20163"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
+         id="tspan3453-6">(viscous)</tspan></text>
+  </g>
+</svg>
