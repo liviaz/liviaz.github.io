@@ -4,7 +4,7 @@ title: Gene expression profiling
 permalink: gene-expression
 ---
 
-# Project: identifying genes important for embryo development
+# Identifying genes important for embryo development
 
 This project was a continuation of my [work on predicting embryo viability](../predicting-viability.html). I used the classfier which I developed to predict embryo viability, and looked at differences in gene expression between embryos predicted to be viable and those predicted to be nonviable. This study was able to yield insight into what can go wrong early in development to prevent an embryo from resulting in a successful pregnancy.
 

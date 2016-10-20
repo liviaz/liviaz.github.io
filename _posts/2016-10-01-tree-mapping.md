@@ -4,7 +4,7 @@ title: Mapping urban trees
 permalink: tree-mapping
 ---
 
-# Project: mapping trees in San Francisco
+# Mapping trees in San Francisco
 asdfasdfsda
 
 ### hello

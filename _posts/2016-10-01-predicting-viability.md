@@ -4,7 +4,7 @@ title: Predicting embryo viability
 permalink: predicting-viability
 ---
 
-# Project: predicting embryo viability
+# Predicting embryo viability
 
 The goal of this project was to develop a predictor of embryo viability with better performance compared to the current clinical gold standard. You can read more about the motivation behind this project and the clinical need in _in vitro_ fertilization (IVF) [here](../clinical-need.html).
 
