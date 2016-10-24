@@ -34,11 +34,184 @@
 
       <section>
     
-      <h1 id="mapping-trees-in-san-francisco">Mapping trees in San Francisco</h1>
-<p>asdfasdfsda</p>
+      <h1 id="mapping-san-francisco-tree-geography">Mapping San Francisco tree geography</h1>
 
-<h3 id="hello">hello</h3>
-<p>hi</p>
+<p>This is a project I worked on in my spare time which was motivated by my interest in working with geographical data and my desire to finally get more comfortable with Python. In my research I spent a lot of time working with Matlab, R and C++ to run hardware and analyze biological or clinical data. Since I have been seeing more and more cool projects built with Python, I decided to try it out for myself and get some experience working with a different kind of data as well.</p>
+
+<p>Luckily, the city of San Francisco has an incredible assortment of <a href="https://data.sfgov.org/">publicly available data</a> which anyone can download and start playing with. Since I’m a big fan of nature and green space in cities, I settled on a list of all street trees in San Francisco from the Department of Public Works. A summary of my findings is shown below, and you can see the full iPython notebook <a href="../files/TreeMapping.ipynb">here</a>.</p>
+
+<h3 id="data-cleaning">Data cleaning</h3>
+
+<p>The data is available as a csv file which contains 94,552 rows of data for each tree including the tree ID, legal status, species, address, planting date, and geographic coordinates. An example screenshot of the file is shown below, which shows that there is a lot of missing or incomplete data.</p>
+
+<div style="width:500px; margin:auto; margin-top: 20px; text-align: center;">
+  <p><img src="../images/sf-raw-data-example.jpg" alt="tree data" /></p>
+</div>
+
+<p>After some considerable cleaning and removing of null or incomplete values, I was left with a table like the one below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>qCaretaker</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>plantYear</th>
+      <th>speciesLatin</th>
+      <th>speciesCommon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Private</td>
+      <td>37.758938</td>
+      <td>-122.488532</td>
+      <td>1994</td>
+      <td>Prunus serrulata</td>
+      <td>Ornamental Cherry</td>
+    </tr>
+    <tr>
+      <td>Private</td>
+      <td>37.789163</td>
+      <td>-122.454008</td>
+      <td>2001</td>
+      <td>Magnolia grandiflora</td>
+      <td>Southern Magnolia</td>
+    </tr>
+    <tr>
+      <td>DPW</td>
+      <td>37.713734</td>
+      <td>-122.443667</td>
+      <td>2012</td>
+      <td>Tristaniopsis laurina</td>
+      <td>Swamp Myrtle</td>
+    </tr>
+    <tr>
+      <td>Private</td>
+      <td>37.752553</td>
+      <td>-122.393692</td>
+      <td>1998</td>
+      <td>Sapium sebiferum</td>
+      <td>Chinese Tallow</td>
+    </tr>
+    <tr>
+      <td>DPW</td>
+      <td>37.796565</td>
+      <td>-122.401791</td>
+      <td>2014</td>
+      <td>Ginkgo biloba ‘Princeton Sentry’</td>
+      <td>Princeton Sentry Maidenhair</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="initial-visualization">Initial visualization</h3>
+
+<p>As a first pass, we can visualize the tree location data as a heatmap superimposed on a map of San Francisco. I used the <a href="http://jupyter-gmaps.readthedocs.io/en/latest/#">gmaps</a> package in Python to allow for plotting data on top of Google maps (see the linked iPython notebook for interactive version):</p>
+
+<div style="width:500px; margin:auto; margin-top: 20px; text-align: center;">
+  <p><img src="../images/sf-map-wide.jpg" alt="tree data" /></p>
+</div>
+
+<p>Looking at this map, it is clear that there is quite a bit of variation in tree density across the city. I wondered if this was simply due to variations in local population density, or if there were other factors that influenced where the city chose to plant trees. There were also over 300 different types of trees included in the database; I wondered what types were the most common, and if this also varied with location or other factors.</p>
+
+<h3 id="grouping-by-zip-code">Grouping by zip code</h3>
+
+<p>Since San Francisco is split into nearly 30 zip codes, I thought this would be a great way to cluster the location data for a more in-depth analysis (see image below).</p>
+
+<div style="width:300px; margin:auto; margin-top: 20px; text-align: center;">
+  <p><img src="../images/sf-zip-map.jpg" alt="tree data" /></p>
+</div>
+
+<p>The dividing lines between zip codes also roughly correlate with some of the boundaries between neighborhoods in San Francisco, which increases the likelihood that patterns of tree type and number differ between zip codes (since they almost certainly differ between neighborhoods).</p>
+
+<p>Using the <a href="https://github.com/MacHu-GWU/uszipcode-project">uszipcode</a> package in Python, I mapped each (Longitude, Latitude) coordinate pair to its zip code, and was also able to add on information specific to that zip code such as population density, land area, and average income. The table below shows the full set of information I obtained for each tree (a subset of the columns and 5 rows are shown):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>…</th>
+      <th>zipCode</th>
+      <th>Density</th>
+      <th>LandArea</th>
+      <th>Wealthy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>37.758938</td>
+      <td>-122.488532</td>
+      <td>…</td>
+      <td>94122</td>
+      <td>23738.559322</td>
+      <td>2.36</td>
+      <td>26177.898131</td>
+    </tr>
+    <tr>
+      <td>37.789163</td>
+      <td>-122.454008</td>
+      <td>…</td>
+      <td>94118</td>
+      <td>19650.769231</td>
+      <td>1.95</td>
+      <td>41202.501083</td>
+    </tr>
+    <tr>
+      <td>37.713734</td>
+      <td>-122.443667</td>
+      <td>…</td>
+      <td>94112</td>
+      <td>23633.035714</td>
+      <td>3.36</td>
+      <td>18441.943280</td>
+    </tr>
+    <tr>
+      <td>37.752553</td>
+      <td>-122.393692</td>
+      <td>…</td>
+      <td>94107</td>
+      <td>14859.776536</td>
+      <td>1.79</td>
+      <td>49267.061356</td>
+    </tr>
+    <tr>
+      <td>37.796565</td>
+      <td>-122.401791</td>
+      <td>…</td>
+      <td>94111</td>
+      <td>10920.588235</td>
+      <td>0.34</td>
+      <td>70755.44142</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Now we can start to look at differences between the zip codes!</p>
+
+<p>TBD…</p>
+
+<ol>
+  <li>Zip codes with the most trees per land area (simple bar graph)</li>
+  <li>Most common trees (bar graph / histogram)</li>
+  <li>Top trees for each zip code (heatmap)</li>
+  <li>Most similar zip codes (correlation clustering)</li>
+  <li>Map locations of most similar zip codes (map)</li>
+</ol>
+
+<h3 id="predicting-tree-number">Predicting tree number</h3>
+
+<ol>
+  <li>Pull weather info?</li>
+  <li>Pick a tree type (or just total trees) and make regression model to predict how many are present based on zip code / other characteristics</li>
+</ol>
+
+<h3 id="tree-distribution-over-time">Tree distribution over time</h3>
+
+<p>To include:
+1. Trees planted over time
+2. Separate by zip code</p>
 
 
       

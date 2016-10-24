@@ -10,7 +10,7 @@ This project was a continuation of my [work on predicting embryo viability](../p
 
 This study yielded insight into what can go wrong early in development to prevent an embryo from resulting in a successful pregnancy. It also resulted in me becoming very comfortable with using R and writing Unix shell scripts, since many tools for gene expression data analysis are written in R, and the data processing pipeline involves a great deal of repetition on large amounts of data (in this case nearly 500 GB!).
 
-This material is drawn from [my recently published paper](../images/ncomms10809.pdf) and accompanying code can be found on my [GitHub profile](https://github.com/liviaz/EmbryoProject/tree/master/RNA_seq_analysis). 
+This material is drawn from [my recently published paper](../images/ncomms10809.pdf) and accompanying R code can be found on my [GitHub profile](https://github.com/liviaz/EmbryoProject/tree/master/RNA_seq_analysis). 
 
 
 ### Motivation
