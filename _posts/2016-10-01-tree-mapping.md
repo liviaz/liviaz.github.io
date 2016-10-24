@@ -8,7 +8,7 @@ permalink: tree-mapping
 
 This is a project I worked on in my spare time which was motivated by my interest in working with geographical data and my desire to finally get more comfortable with Python. In my research I spent a lot of time working with Matlab, R and C++ to run hardware and analyze biological or clinical data. Since I have been seeing more and more cool projects built with Python, I decided to try it out for myself and get some experience working with a different kind of data as well. 
 
-Luckily, the city of San Francisco has an incredible assortment of [publicly available data](https://data.sfgov.org/) which anyone can download and start playing with. Since I'm a big fan of nature and green space in cities, I settled on a list of all street trees in San Francisco from the Department of Public Works. A summary of my findings is shown below, and you can see the full iPython notebook [here](../files/TreeMapping.ipynb).
+Luckily, the city of San Francisco has an incredible assortment of [publicly available data](https://data.sfgov.org/) which anyone can download and start playing with. Since I'm a big fan of nature and green space in cities, I settled on a list of all street trees in San Francisco from the Department of Public Works. A summary of my findings is shown below, and you can see the full iPython notebook [here](http://nbviewer.jupyter.org/github/liviaz/liviaz.github.io/blob/master/files/TreeMapping.ipynb).
 
 ### Data cleaning 
 
