@@ -30,7 +30,7 @@ section {
   padding-right: 0px;
 }
 
-section h1 {
+h1, h2, h3, p {
   margin-left: 10px;
 }
 

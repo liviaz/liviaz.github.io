@@ -8,7 +8,7 @@ permalink: predicting-viability
 
 The goal of this project was to develop a predictor of embryo viability with better performance compared to the current clinical gold standard. You can read more about the motivation behind this project and the clinical need in _in vitro_ fertilization (IVF) [here](../clinical-need.html).
 
-On this page I will go into detail about how I gathered parameters for my model and how I validated them in a laboratory and clinical setting. This material is drawn from [my recently published paper](http://www.nature.com/ncomms/2016/160224/ncomms10809/full/ncomms10809.html) and also from my class projects for CS 229 and AA 228 at Stanford (Machine Learning and Decision Making Under Uncertainty).
+On this page I will go into detail about how I gathered parameters for my model and how I validated them in a laboratory and clinical setting. This material is drawn from [my recently published paper](../images/ncomms10809.pdf) and also from my class projects for CS 229 and AA 228 at Stanford (Machine Learning and Decision Making Under Uncertainty).
 
 The code for this project was written in Matlab and can be found on my [GitHub profile](https://github.com/liviaz/EmbryoProject).
 

@@ -52,7 +52,7 @@ header li, header ul li + li + li {
 p {
   margin-bottom: 20px;
   margin-top: 0px;
-  margin-left: 0px;
+  margin-left: 10px;
   margin-right: 0px;
   width: 90%;
 }
@@ -70,7 +70,7 @@ section {
   padding-right: 0px;
 }
 
-section h1 {
+section, h1, h2, h3 {
   margin-left: 10px;
 }
 

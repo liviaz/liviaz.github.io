@@ -40,7 +40,7 @@
 
 <p>This study yielded insight into what can go wrong early in development to prevent an embryo from resulting in a successful pregnancy. It also resulted in me becoming very comfortable with using R and writing Unix shell scripts, since many tools for gene expression data analysis are written in R, and the data processing pipeline involves a great deal of repetition on large amounts of data (in this case nearly 500 GB!).</p>
 
-<p>This material is drawn from <a href="http://www.nature.com/ncomms/2016/160224/ncomms10809/full/ncomms10809.html">my recently published paper</a> and accompanying code can be found on my <a href="https://github.com/liviaz/EmbryoProject/tree/master/RNA_seq_analysis">GitHub profile</a>.</p>
+<p>This material is drawn from <a href="../images/ncomms10809.pdf">my recently published paper</a> and accompanying code can be found on my <a href="https://github.com/liviaz/EmbryoProject/tree/master/RNA_seq_analysis">GitHub profile</a>.</p>
 
 <h3 id="motivation">Motivation</h3>
 
@@ -56,7 +56,7 @@
 
 <p>I thought this would be the perfect opportunity to use my noninvasive day 1 predictor of viability as a better “ground truth” than maternal age or chromosomal status. So at day 1 after fertilization, I measured embryo biomechanical properties to predict their developmental outcome, and measured their gene expression at the same time.</p>
 
-<div style="width:300px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;">
+<div style="width:250px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;">
   <p><img src="../images/gene-expr-expt-design-2.svg" alt="morphology grading" /></p>
 </div>
 
@@ -104,15 +104,170 @@
   <p><img src="../images/clustering-dendrogram.svg" alt="morphology grading" /></p>
 </div>
 
+<h3 id="differential-expression-analysis">Differential expression analysis</h3>
+
 <p>Now we can actually look for statistically significant differences in gene expression between the “good” and “bad” groups. This analysis was conducted with the <a href="http://bioconductor.org/packages/release/bioc/html/edgeR.html">edgeR</a> package in R, which returns adjusted p-values for all genes in the input data.</p>
 
-<p>In my data I detected expression of 12,342 total human genes, and of these 1,879 (15%) were differentially expressed (DE) between the viable and nonviable embryos with an adjusted p-value (commonly called a q-value) of q &lt; 0.01. A scatterplot of all expressed genes is shown below, where the ratio of gene expression between viable and nonviable embryos is plotted against the total expression of that gene in counts per million. Genes with q &lt; 0.01 are highlighted in blue.</p>
+<p>In my data I detected expression of 12,342 total human genes, and of these 1,879 (15%) were differentially expressed between the viable and nonviable embryos with an adjusted p-value (commonly called a q-value) of q &lt; 0.01. A scatterplot of all expressed genes is shown below, where the ratio of gene expression between viable and nonviable embryos is plotted against the total expression of that gene in counts per million. Genes with q &lt; 0.01 are highlighted in blue.</p>
 
 <div style="width:300px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;">
-  <p><img src="../images/smear-plot.svg" alt="morphology grading" /></p>
+  <p><img src="../images/smear-plot.svg" alt="smear plot" /></p>
 </div>
 
-<p>… to be continued</p>
+<p>This analysis produced a list of genes along with their q-values as shown below:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"A1CF" 0.00455717138056158
+"A2ML1" 0.121807736625973
+"A4GALT" 0.534415196889677
+"AAAS" 0.927634497435436
+"AACS" 0.0475435671977585
+"AACSP1" 0.416641010076768
+"AADAT" 0.0147765708417153
+"AAED1" 0.464401797881947
+"AAGAB" 0.370862765530471
+"AAK1" 0.00332496124830891
+...
+...
+</code></pre>
+</div>
+
+<p>Now the next step was to make sense out of this long list of genes, to answer questions such as <strong>“what biological processes could be altered in nonviable embryos?”</strong> To answer this questions, I had to cluster the differentially expressed genes with q-values &lt; 0.01 by biological function.</p>
+
+<h3 id="gene-functional-analysis">Gene functional analysis</h3>
+
+<p>Luckily, the NIH provides a <a href="http://david.ncifcrf.gov/">tool</a> to predict which clusters of biological processes are enriched within a group of gene names, along with q-values for each process in each cluster. For my list of differentially expressed genes, this tool output the following table of biological processes associated with those genes, ranked in order of significance:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Cluster name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Nucleotide binding</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>DNA repair, response to DNA damage</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Protein catabolic process</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Cell cycle and mitosis</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Metal ion binding</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>mRNA processing and splicing</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Regulation of transcription</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Intracellular transport and protein localization</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Phosphatidylinositol signaling system</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>ATPase and DNA helicase activity</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Protein modification and ubiquitination</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Chromatin modification and chromosome organization</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Protein serine / threonine kinase activity</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Microtubule-based movement</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Coenzyme metabolic process</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Protein complex assembly</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Sister chromatid segregation and spindle formation</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Transcription initiation and transcription factor activity</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Proteasomal protein catabolic process</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Only the top 19 results are shown because the rest did not reach statistical significance. With this table, it was possible to choose a specific cluster of interest and look at differential expression of only genes within that cluster. For example, <strong>cluster 2</strong> contains genes important for DNA repair, and we can look at the expression of each of those genes in viable and nonviable embryos for comparison:</p>
+
+<div style="width:300px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;">
+  <p><img src="../images/gene-expr-bar.svg" alt="smear plot" /></p>
+</div>
+
+<p><strong>Cluster 9</strong> refers to the Phosphatidylinositol signaling system, which is important for the completion of fertilization. We can now plot the expression of genes involves in the fertilization process:</p>
+
+<div style="width:300px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;">
+  <p><img src="../images/gene-expr-fert.svg" alt="smear plot" /></p>
+</div>
+
+<p>Up to this point we have been able to identify genes correlated with viability and understand which biological processes may be altered in nonviable embryos. However, this analysis has been purely descriptive and has not established a causal link between misregulation of a specific gene and a change in viability.</p>
+
+<h3 id="establishing-causation">Establishing causation</h3>
+
+<p>To determine whether a gene impacts embryo viability, we must be able to modulate its function and observe the effect on embryo development in comparison to a control group. In this case, I chose a gene called <em>ITPR1</em>, which is part of the fertilization signaling pathway (cluster 9) and shows reduced expression in nonviable embryos according to the analysis described above.</p>
+
+<p>My hypothesis was that <em>ITPR1</em> is an important part of fertilization, and so reduced expression can result in incomplete fertilization. This should result in an overly soft embryo (because embryos harden during fertilization), which will not be viable according to my prior research.</p>
+
+<p>Therefore, I decided to artificially reduce expression of the <em>ITPR1</em> gene by blocking its product with an antibody, and to observe the effects on embryo hardening after fertilization. The experimental design is shown below:</p>
+
+<div style="width:300px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;">
+  <p><img src="../images/fert-expt-design.svg" alt="smear plot" /></p>
+</div>
+
+<p>The results of this experiment are shown below, where it can be seen that reducing <em>ITPR1</em> function via antibody injection results in embryos with lower overall stiffness (orange distribution) compared to a control group (blue distribution). The stiffness values associated with optimal viability are shown for reference (highlighted in green).</p>
+
+<div style="width:300px; margin:auto; margin-top: 20px; text-align: center; display:block; vertical-align:center;">
+  <p><img src="../images/mech-after-fert.svg" alt="smear plot" /></p>
+</div>
+
+<p>Thus, these results have confirmed that proper expression of the <em>ITPR1</em> gene is important for ensuring optimal embryo stiffness after fertilization, which is important for viability. It is likely that many other genes also play a key role in determining viability, and they would have to be tested one by one to confirm. Still, the candidate genes produced by the gene expression analysis have enabled us to narrow our focus to only genes differentially expressed between viable and nonviable embryos, rather than choosing at random as biologists used to do.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In summary, the project described here involved:</p>
+
+<ol>
+  <li>Separating human embryos by viability and looking at gene expression within each group</li>
+  <li>Finding genes differentially expressed between viable and nonviable embryos</li>
+  <li>Identifying biological processes that may be altered based on the differentially expressed genes</li>
+  <li>Choosing one specific gene and establishing a causal link between reduced expression and reduced viability</li>
+</ol>
 
 
       
