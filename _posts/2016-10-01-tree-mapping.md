@@ -6,7 +6,7 @@ permalink: tree-mapping
 
 # Mapping San Francisco tree geography
 
-This is a project I worked on in my spare time which was motivated by my interest in working with geographical data and my desire to finally get more comfortable with Python. In my research I spent a lot of time working with Matlab, R and C++ to run hardware and analyze biological or clinical data. Since I have been seeing more and more cool projects built with Python, I decided to try it out for myself and get some experience working with a different kind of data as well. 
+This is a project I worked on in my spare time which was motivated by my interest in working with geographical data and my desire to finally get more comfortable with Python. In my research I spent a lot of time working with Matlab, R and C++ to run hardware and analyze biological or clinical data. Since I have been seeing more and more cool projects built with Python, I decided to try it out for myself and get some experience working with a different kind of data as well. I ended up generating some 
 
 Luckily, the city of San Francisco has an incredible assortment of [publicly available data](https://data.sfgov.org/) which anyone can download and start playing with. Since I'm a big fan of nature and green space in cities, I settled on a list of all street trees in San Francisco from the Department of Public Works. A summary of my findings is shown below, and you can see the full iPython notebook [here](http://nbviewer.jupyter.org/github/liviaz/liviaz.github.io/blob/master/files/TreeMapping.ipynb).
 
@@ -65,20 +65,12 @@ TBD...
 1. Zip codes with the most trees per land area (simple bar graph)
 2. Most common trees (bar graph / histogram)
 3. Top trees for each zip code (heatmap)
-4. Most similar zip codes (correlation clustering)
-5. Map locations of most similar zip codes (map)
 
 ### Predicting tree number
 
 1. Pull weather info?
 2. Pick a tree type (or just total trees) and make regression model to predict how many are present based on zip code / other characteristics
 
-
-### Tree distribution over time
-
-To include:
-1. Trees planted over time
-2. Separate by zip code
 
 
 
